@@ -42,7 +42,8 @@ class Server:
         """Return a dictionary containing hypermedia pagination information
         """
         data_dict = self.indexed_dataset()
-        assert index is not None and index >= 0 and index <= max(data_dict.keys())
+        max_key = max(data_dict.keys())
+        assert index is not None and index >= 0 and index <= max_key
         data = []
         data_count = 0
         next_index = None
