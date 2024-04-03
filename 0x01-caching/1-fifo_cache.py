@@ -1,30 +1,28 @@
 #!/usr/bin/python3
-"""FIFO cache Module"""
-
+""" FIFOCache module
+"""
 
 from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """FIFOCache class"""
+    """ FIFOCache class """
 
     def __init__(self):
-        """Initialise FIFOCache"""
+        """ Initialize FIFOCache """
         super().__init__()
 
     def put(self, key, item):
-        """Adds an item in the cache."""
-        if key is None or item is None:
-            return
-        if key in self.cache_data:
-            del self.cache_data[key]
-        elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            discarded_key, _ = self.cache_data.popitem(last=False)
-            print("DISCARD:", discarded_key)
+        """ Add an item in the cache """
+        if key is not None and item is not None:
+            if len(self.cache_data) >= self.MAX_ITEMS:
+                discarded_key = next(iter(self.cache_data))
+                del self.cache_data[discarded_key]
+                print("DISCARD:", discarded_key)
             self.cache_data[key] = item
 
     def get(self, key):
-        """Get an item by key"""
+        """ Get an item by key """
         if key is not None and key in self.cache_data:
-            return self.cache_data
+            return self.cache_data[key]
         return None
