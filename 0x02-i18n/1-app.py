@@ -17,7 +17,7 @@ class Config:
 
 
 @app.route('/')
-def index():
+def index() -> str:
     """Default page"""
     return render_template('1-index.html')
 
