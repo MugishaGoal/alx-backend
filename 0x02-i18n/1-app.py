@@ -1,4 +1,4 @@
-#!/usr/bin/env python43
+#!/usr/bin/env python3
 """Instantiation of Babel extension in flask app"""
 
 
@@ -7,6 +7,7 @@ from flask_babel import Babel
 
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
