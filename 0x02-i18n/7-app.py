@@ -59,7 +59,7 @@ def get_timezone() -> str:
 
 @app.before_request
 def before_request() -> None:
-    """Executes some routines"""
+    """Executes some routines before request"""
     user = get_user()
     g.user = user
     g.locale = get_locale()
